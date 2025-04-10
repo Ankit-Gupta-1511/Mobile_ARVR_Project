@@ -1,25 +1,32 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CardboardAutoMoveFromCamera : MonoBehaviour
+public class CardboardMoveWithController : MonoBehaviour
 {
-    public float moveSpeed = 2.0f;
+    public Camera vrCamera;
+    public float moveSpeed = 2f;
     private bool isMoving = false;
+
+    private CharacterController controller;
+
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
     void Update()
     {
-        // Toggle movement on screen tap (new Input System)
         if (Touchscreen.current?.primaryTouch.press.wasPressedThisFrame == true)
         {
             isMoving = !isMoving;
         }
 
-        // Move in the direction the camera is facing
-        if (isMoving && Camera.main != null)
+        if (isMoving && vrCamera != null)
         {
-            Vector3 direction = Camera.main.transform.forward;
-            direction.y = 0; // Prevent floating/falling
-            transform.position += direction.normalized * moveSpeed * Time.deltaTime;
+            Vector3 direction = vrCamera.transform.forward;
+            direction.y = 0;
+            direction.Normalize();
+            controller.Move(direction * moveSpeed * Time.deltaTime);
         }
     }
 }
