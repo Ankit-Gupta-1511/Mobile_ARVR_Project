@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Treasure
   - Shoe
+  - Animated_Shoe
   layers:
   - Default
   - TransparentFX

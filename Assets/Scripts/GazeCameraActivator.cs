@@ -28,6 +28,7 @@ public class GazeActivator : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 10f))
         {
             GameObject hitObject = hit.collider.gameObject;
+            
 
             if (hitObject.CompareTag("Shoe"))
             {
@@ -38,8 +39,9 @@ public class GazeActivator : MonoBehaviour
                 }
 
                 gazeTimer += Time.deltaTime;
+                
 
-                if (gazeTimer >= gazeDuration && tapTriggered)
+                if (gazeTimer >= gazeDuration)
                 {
                     ShoeData shoeData = hitObject.GetComponent<ShoeData>();
                     if (shoeData != null)
@@ -47,6 +49,20 @@ public class GazeActivator : MonoBehaviour
                         Debug.Log($"Gaze + tap triggered on shoe: {shoeData.shoeName}");
                         FindObjectOfType<XRSceneManager>().LoadARScene();
                         tapTriggered = false;
+                    }
+
+                    var animTrigger = hit.collider.GetComponent<GazeAnimationTrigger>();
+                    Debug.Log(hit.collider.name);
+                    if (animTrigger != null)
+                    {
+                        Debug.Log("Animation Triggering ...");
+                        if (hit.collider.gameObject != currentTarget)
+                        {
+                            currentTarget = hit.collider.gameObject;
+                            animTrigger.StartGaze();
+                        }
+
+                        animTrigger.OnGazeStay(); // accumulate gaze time and play if threshold reached
                     }
 
                     tapTriggered = false;
