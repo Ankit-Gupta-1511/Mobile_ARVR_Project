@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CameraFeed : MonoBehaviour
 {
     public RawImage rawImage;
-    private WebCamTexture webcamTexture;
+    [HideInInspector] public WebCamTexture webcamTexture;
 
     void Start()
     {

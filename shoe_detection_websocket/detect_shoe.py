@@ -2,54 +2,63 @@ import mediapipe as mp
 from PIL import Image
 from io import BytesIO
 import numpy as np
-import websockets
 import base64
+import math
 
-mp_drawing = mp.solutions.drawing_utils
+from scipy.spatial.transform import Rotation as R  # For matrix to quaternion
+
 mp_objectron = mp.solutions.objectron
 
-
 def detect_objects(base64_string):
+    # Decode base64 to image
     image_data = base64.b64decode(base64_string)
     image = Image.open(BytesIO(image_data)).convert("RGB")
     image_array = np.array(image)
-    width, height = image.size
 
-    # detect shoes
+    # Initialize Objectron
     with mp_objectron.Objectron(
         static_image_mode=True,
-        max_num_objects=5,
+        max_num_objects=1,
         min_detection_confidence=0.5,
         model_name="Shoe",
     ) as objectron:
         results = objectron.process(image_array)
 
-    # post process detections
-    detections = []
-    for detected_object in results.detected_objects:
-        # get translation
-        translation_dict = {}
-        for i, val in enumerate(detected_object.translation):
-            translation_dict[str(i)] = val
+    if not results or not results.detected_objects:
+        print("No shoes detected.")
+        return {
+            "position": [0, 0, -10],
+            "rotation": [0, 0, 0, 1],
+            "scale": [0.01, 0.01, 0.01]
+        }
 
-        detections.append(
-            {
-                "image_height": height,
-                "image_width": width,
-                "landmarks_2d": [
-                    {"x": landmark.x, "y": landmark.y}
-                    for landmark in detected_object.landmarks_2d.landmark
-                ],
-                "landmarks_3d": [
-                    {"x": landmark.x, "y": landmark.y, "z": landmark.z}
-                    for landmark in detected_object.landmarks_3d.landmark
-                ],
-                "rotation": [
-                    {"col0": x[0], "col1": x[1], "col2": x[2]}
-                    for x in detected_object.rotation
-                ],
-                "translation": translation_dict,
-            }
-        )
+    detected_object = results.detected_objects[0]
 
-    return detections
+    # Extract translation vector
+    position = list(detected_object.translation)
+
+    # Extract rotation matrix (3x3) and convert to quaternion
+    rotation_matrix = np.array(detected_object.rotation)
+    try:
+        quaternion = R.from_matrix(rotation_matrix).as_quat()
+        rotation = quaternion.tolist()  # [x, y, z, w]
+    except Exception as e:
+        print("Rotation matrix conversion failed:", e)
+        rotation = [0, 0, 0, 1]
+
+    # Estimate scale from bounding box (landmarks_3d)
+    x_vals = [lm.x for lm in detected_object.landmarks_3d.landmark]
+    y_vals = [lm.y for lm in detected_object.landmarks_3d.landmark]
+    z_vals = [lm.z for lm in detected_object.landmarks_3d.landmark]
+
+    scale = [
+        max(x_vals) - min(x_vals),
+        max(y_vals) - min(y_vals),
+        max(z_vals) - min(z_vals)
+    ]
+
+    return {
+        "position": position,
+        "rotation": rotation,
+        "scale": scale
+    }
