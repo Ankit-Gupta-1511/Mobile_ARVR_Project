@@ -376,7 +376,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 0f14f70889809dd4dab402329473aa9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 730411213}
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 0f14f70889809dd4dab402329473aa9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 730411214}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 0f14f70889809dd4dab402329473aa9f, type: 3}
 --- !u!1001 &98157475
 PrefabInstance:
@@ -1264,6 +1270,7 @@ GameObject:
   - component: {fileID: 395342742}
   - component: {fileID: 395342741}
   - component: {fileID: 395342740}
+  - component: {fileID: 395342743}
   m_Layer: 5
   m_Name: ScreenCanvas
   m_TagString: Untagged
@@ -1356,6 +1363,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &395342743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395342738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c9f257bd8e0f54183cf0a54d09278c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoeImageUI: {fileID: 1867481297}
+  shoeNameText: {fileID: 754103611}
+  shoePriceText: {fileID: 965012056}
+  shoeDescriptionText: {fileID: 1243974291}
 --- !u!1001 &418913887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1419,18 +1442,110 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 471135796}
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 471135797}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
+--- !u!1 &471135792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
+  m_PrefabInstance: {fileID: 418913887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &471135795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8897093224900880590, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
   m_PrefabInstance: {fileID: 418913887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &471135796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471135792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba281d39248fb884eba22b5fff1679d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoeName: Nike Air Zoom Pegasus 36
+  price: "\u20B99,995"
+  shoeDescription: Lightweight running shoe with responsive Zoom Air. Ideal for daily
+    runs and long distances.
+  shoeImage: {fileID: 21300000, guid: 98a56f4ef2db2c44b8d9409369d56b3c, type: 3}
+--- !u!65 &471135797
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471135792}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.712884, y: 0.900306, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &480728087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
+  m_PrefabInstance: {fileID: 1745449168}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &480728090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8897093224900880590, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
   m_PrefabInstance: {fileID: 1745449168}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &480728091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480728087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba281d39248fb884eba22b5fff1679d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoeName: Nike Air Zoom Pegasus 36
+  price: "\u20B99,995"
+  shoeDescription: Lightweight running shoe with responsive Zoom Air. Ideal for daily
+    runs and long distances.
+  shoeImage: {fileID: 21300000, guid: 98a56f4ef2db2c44b8d9409369d56b3c, type: 3}
+--- !u!65 &480728092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480728087}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &594282652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1626,7 @@ Transform:
   - {fileID: 272625472}
   - {fileID: 395342739}
   - {fileID: 671841081}
+  - {fileID: 881471880}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671841080
@@ -1774,11 +1890,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8897093224900880590, guid: fff4c91aa5d64e64a95d5a33b6d2a7a2, type: 3}
   m_PrefabInstance: {fileID: 701328549}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &730411211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8128668236925612103, guid: 0f14f70889809dd4dab402329473aa9f, type: 3}
+  m_PrefabInstance: {fileID: 65420502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &730411212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8897093224900880590, guid: 0f14f70889809dd4dab402329473aa9f, type: 3}
   m_PrefabInstance: {fileID: 65420502}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &730411213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730411211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba281d39248fb884eba22b5fff1679d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoeName: Nike Air Jordan
+  price: "\u20B914,995"
+  shoeDescription: Iconic high-top basketball sneaker with bold style and premium
+    support. A timeless streetwear classic.
+  shoeImage: {fileID: 21300000, guid: bb2a35bead534e74b8c66f0aaab4de82, type: 3}
+--- !u!65 &730411214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730411211}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &741532827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1937,7 +2096,7 @@ GameObject:
   - component: {fileID: 754103612}
   - component: {fileID: 754103611}
   m_Layer: 5
-  m_Name: ShoePrice
+  m_Name: ShoeNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1959,8 +2118,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -355, y: 239}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -174, y: 236}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754103611
 MonoBehaviour:
@@ -1991,8 +2150,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190087
+  m_fontColor: {r: 0.028301895, g: 0.00040049778, b: 0.00040049778, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2009,13 +2168,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2183,6 +2342,100 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationAxis: {x: 0, y: 1, z: 0}
   rotationSpeed: 20
+--- !u!1 &881471879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 881471880}
+  - component: {fileID: 881471881}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &881471880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881471879}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.9955555, z: -0, w: 0.094177485}
+  m_LocalPosition: {x: 108, y: 1.1800003, z: 4.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 631796526}
+  m_LocalEulerAnglesHint: {x: 0, y: -169.192, z: 0}
+--- !u!108 &881471881
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881471879}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 5
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &907292807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,7 +2463,7 @@ Transform:
   m_GameObject: {fileID: 907292807}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.5759413, z: -0, w: 0.8174911}
-  m_LocalPosition: {x: -3.72, y: 2.811, z: 0.00000085417736}
+  m_LocalPosition: {x: -3.72, y: 2.549, z: 0.00000085417736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2250,7 +2503,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 5
+  m_Height: 6
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -2472,6 +2725,8 @@ GameObject:
   - component: {fileID: 959308591}
   - component: {fileID: 959308589}
   - component: {fileID: 959308594}
+  - component: {fileID: 959308595}
+  - component: {fileID: 959308596}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2555,7 +2810,7 @@ Transform:
   m_GameObject: {fileID: 959308587}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.94, z: 0}
+  m_LocalPosition: {x: 0, y: 2.567, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2647,6 +2902,32 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!114 &959308595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959308587}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c0b0f1d55ce8b4a8637b1b20e200ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookSpeed: 3
+--- !u!114 &959308596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959308587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b7e86e35384654184f0d135bead39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeDistance: 10
 --- !u!1 &965012054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,7 +2940,7 @@ GameObject:
   - component: {fileID: 965012057}
   - component: {fileID: 965012056}
   m_Layer: 5
-  m_Name: ShoeNameText
+  m_Name: ShoePriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2681,8 +2962,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -346, y: -220}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -179, y: -220}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &965012056
 MonoBehaviour:
@@ -2713,8 +2994,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2737,7 +3018,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -3013,7 +3294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1199920617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3233,7 +3514,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23829d7c401709c488bcf9352065da38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1863008119}
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23829d7c401709c488bcf9352065da38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1863008120}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 23829d7c401709c488bcf9352065da38, type: 3}
 --- !u!1 &1243974289
 GameObject:
@@ -3269,8 +3556,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 303, y: 0}
-  m_SizeDelta: {x: 522.6, y: 314.9}
+  m_AnchoredPosition: {x: 351, y: 0}
+  m_SizeDelta: {x: 600, y: 314.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243974291
 MonoBehaviour:
@@ -3301,8 +3588,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4282466625
+  m_fontColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3319,8 +3606,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3850,7 +4137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4552,7 +4839,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 480728091}
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 480728092}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 23abd14a37ac6e347a88bd07702f8cc2, type: 3}
 --- !u!1 &1775710257
 GameObject:
@@ -5213,11 +5506,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9, y: 4.75, z: 3.25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1863008117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8128668236925612103, guid: 23829d7c401709c488bcf9352065da38, type: 3}
+  m_PrefabInstance: {fileID: 1238631359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1863008118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8897093224900880590, guid: 23829d7c401709c488bcf9352065da38, type: 3}
   m_PrefabInstance: {fileID: 1238631359}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1863008119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863008117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba281d39248fb884eba22b5fff1679d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoeName: Nike TC 7900 Sail
+  price: "\u20B912,495"
+  shoeDescription: Rugged urban sneaker with durable overlays, elevated comfort,
+    and a futuristic vibe.
+  shoeImage: {fileID: 21300000, guid: aba7c9ef5ffb76641a5a80ebc92f90a3, type: 3}
+--- !u!65 &1863008120
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863008117}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1867481295
 GameObject:
   m_ObjectHideFlags: 0
@@ -5268,7 +5604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
