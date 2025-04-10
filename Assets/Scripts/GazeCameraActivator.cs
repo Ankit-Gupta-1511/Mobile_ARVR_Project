@@ -1,6 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class GazeActivator : MonoBehaviour
 {
@@ -27,21 +27,30 @@ public class GazeActivator : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 10f))
         {
-            if (hit.collider.CompareTag("Treasure"))
-            {
+            GameObject hitObject = hit.collider.gameObject;
 
-                if (hit.collider.gameObject != currentTarget)
+            if (hitObject.CompareTag("Shoe"))
+            {
+                if (hitObject != currentTarget)
                 {
-                    currentTarget = hit.collider.gameObject;
+                    currentTarget = hitObject;
                     gazeTimer = 0f;
                 }
 
                 gazeTimer += Time.deltaTime;
-                if (gazeTimer >= gazeDuration)
+
+                if (gazeTimer >= gazeDuration && tapTriggered)
                 {
-                    Debug.Log("Treasure selected via gaze + tap.");
-                    FindObjectOfType<XRSceneManager>().LoadARScene();
+                    ShoeData shoeData = hitObject.GetComponent<ShoeData>();
+                    if (shoeData != null)
+                    {
+                        Debug.Log($"Gaze + tap triggered on shoe: {shoeData.shoeName}");
+                        FindObjectOfType<XRSceneManager>().LoadARScene();
+                        tapTriggered = false;
+                    }
+
                     tapTriggered = false;
+                    gazeTimer = 0f; // Optional: reset after triggering
                 }
             }
             else
