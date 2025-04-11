@@ -24,6 +24,9 @@ public class ShoePoseReceiver : MonoBehaviour
     public int port = 8765;
     public float updateInterval = 0.5f;
 
+    public Transform shoeAnchor;
+    public float activationDistance = 0.2f;
+
     private NativeWebSocket.WebSocket websocket;
     private WebCamTexture cam;
     private float timer;
@@ -159,7 +162,7 @@ public class ShoePoseReceiver : MonoBehaviour
         Destroy(snap);
     }
 
-    void UpdateShoePose(Vector3 cameraSpacePos, Quaternion rotation, Vector3 scale)
+    /*void UpdateShoePose(Vector3 cameraSpacePos, Quaternion rotation, Vector3 scale)
     {
         Debug.Log($"[Pose Debug] Pos: {cameraSpacePos}, Rot: {rotation.eulerAngles}, Scale: {scale}");
 
@@ -184,6 +187,51 @@ public class ShoePoseReceiver : MonoBehaviour
 
         shoeModel.SetActive(true);
         Debug.Log("Corrected World Shoe Pos: " + worldPos);
+    }*/
+
+    void UpdateShoePose(Vector3 cameraSpacePos, Quaternion rotation, Vector3 scale)
+    {
+        /*Debug.Log($"[Pose Debug] Pos: {cameraSpacePos}, Rot: {rotation.eulerAngles}, Scale: {scale}");*/
+
+        // Sanitize input
+        if (cameraSpacePos == Vector3.zero || cameraSpacePos.z < 0)
+        {
+            shoeModel.SetActive(false);
+            return;
+        }
+
+        cameraSpacePos.z = Mathf.Max(cameraSpacePos.z, 0.5f); // push in front of camera if needed
+        Vector3 worldPos = Camera.main.transform.TransformPoint(cameraSpacePos);
+
+        // Check if the detected foot is close enough to the anchor
+        float distanceToAnchor = Vector3.Distance(worldPos, shoeAnchor.position);
+        if (distanceToAnchor > activationDistance)
+        {
+            shoeModel.SetActive(false);
+            return;
+        }
+
+        // Snap shoe to anchor
+        shoeModel.transform.position = shoeAnchor.position;
+
+        /*shoeModel.transform.rotation = Vector3.zero;*/
+
+        /*shoeModel.transform.localScale = new Vector3(
+            Mathf.Max(scale.x, 0.06f),
+            Mathf.Max(scale.y, 0.06f),
+            Mathf.Max(scale.z, 0.06f)
+        );*/
+        Debug.Log($"[Pose Debug] Pos: {cameraSpacePos}, Rot: {rotation.eulerAngles}, Scale: {shoeModel.transform.localScale}");
+        shoeModel.SetActive(true);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (shoeAnchor != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(shoeAnchor.position, activationDistance);
+        }
     }
 
 
