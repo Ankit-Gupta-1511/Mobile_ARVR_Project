@@ -49,8 +49,16 @@ public class ShoePoseReceiver : MonoBehaviour
 
             if (pose.position.Length == 3 && pose.rotation.Length == 4 && pose.scale.Length == 3)
             {
-                Vector3 pos = new Vector3(pose.position[0], pose.position[1], pose.position[2]);
-                Quaternion rot = new Quaternion(pose.rotation[0], pose.rotation[1], pose.rotation[2], pose.rotation[3]);
+                // Flip Z for position
+                Vector3 pos = new Vector3(pose.position[0], pose.position[1], -pose.position[2]);
+
+                // Flip Z and W for rotation to convert OpenGL to Unity (left-handed)
+                Quaternion rot = new Quaternion(
+                    pose.rotation[0],
+                    pose.rotation[1],
+                    -pose.rotation[2],
+                    -pose.rotation[3]
+                );
                 Vector3 scl = new Vector3(pose.scale[0], pose.scale[1], pose.scale[2]);
 
                 UpdateShoePose(pos, rot, scl);
@@ -151,25 +159,35 @@ public class ShoePoseReceiver : MonoBehaviour
         Destroy(snap);
     }
 
-    void UpdateShoePose(Vector3 normalizedViewportPos, Quaternion rotation, Vector3 scale)
+    void UpdateShoePose(Vector3 cameraSpacePos, Quaternion rotation, Vector3 scale)
     {
-        // Convert normalized [0-1] screen position + depth to world position
-        normalizedViewportPos.z = Mathf.Clamp(normalizedViewportPos.z, 0.5f, 3f);
-        Vector3 worldPos = Camera.main.ViewportToWorldPoint(normalizedViewportPos);
+        Debug.Log($"[Pose Debug] Pos: {cameraSpacePos}, Rot: {rotation.eulerAngles}, Scale: {scale}");
+
+        // Sanitize input
+        if (cameraSpacePos == Vector3.zero || cameraSpacePos.z < 0)
+        {
+            shoeModel.SetActive(false);
+            return;
+        }
+
+        cameraSpacePos.z = Mathf.Max(cameraSpacePos.z, 0.5f); // push in front of camera if needed
+        Vector3 worldPos = Camera.main.transform.TransformPoint(cameraSpacePos);
 
         shoeModel.transform.position = worldPos;
-        shoeModel.transform.rotation = rotation;
+        shoeModel.transform.rotation = Camera.main.transform.rotation * rotation;
 
-        // Optional: clamp or smooth scale
-        Vector3 safeScale = new Vector3(
-            Mathf.Max(scale.x, 0.01f),
-            Mathf.Max(scale.y, 0.01f),
-            Mathf.Max(scale.z, 0.01f)
+        shoeModel.transform.localScale = new Vector3(
+            Mathf.Max(scale.x, 0.02f),
+            Mathf.Max(scale.y, 0.02f),
+            Mathf.Max(scale.z, 0.02f)
         );
 
-        shoeModel.transform.localScale = safeScale;
         shoeModel.SetActive(true);
+        Debug.Log("Corrected World Shoe Pos: " + worldPos);
     }
+
+
+
 
     private async void OnApplicationQuit()
     {
