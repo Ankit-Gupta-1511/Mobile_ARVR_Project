@@ -151,11 +151,24 @@ public class ShoePoseReceiver : MonoBehaviour
         Destroy(snap);
     }
 
-    void UpdateShoePose(Vector3 position, Quaternion rotation, Vector3 scale)
+    void UpdateShoePose(Vector3 normalizedViewportPos, Quaternion rotation, Vector3 scale)
     {
-        shoeModel.transform.position = Vector3.Lerp(shoeModel.transform.position, position, 0.5f);
-        shoeModel.transform.rotation = Quaternion.Slerp(shoeModel.transform.rotation, rotation, 0.5f);
-        shoeModel.transform.localScale = Vector3.Lerp(shoeModel.transform.localScale, scale, 0.5f);
+        // Convert normalized [0-1] screen position + depth to world position
+        normalizedViewportPos.z = Mathf.Clamp(normalizedViewportPos.z, 0.5f, 3f);
+        Vector3 worldPos = Camera.main.ViewportToWorldPoint(normalizedViewportPos);
+
+        shoeModel.transform.position = worldPos;
+        shoeModel.transform.rotation = rotation;
+
+        // Optional: clamp or smooth scale
+        Vector3 safeScale = new Vector3(
+            Mathf.Max(scale.x, 0.01f),
+            Mathf.Max(scale.y, 0.01f),
+            Mathf.Max(scale.z, 0.01f)
+        );
+
+        shoeModel.transform.localScale = safeScale;
+        shoeModel.SetActive(true);
     }
 
     private async void OnApplicationQuit()
