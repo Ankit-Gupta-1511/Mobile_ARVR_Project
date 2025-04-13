@@ -80,3 +80,7 @@ crashlytics-build.properties
 *.DS_Store
 
 venv
+
+*.png
+*.mp4
+*.zip

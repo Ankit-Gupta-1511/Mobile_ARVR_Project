@@ -162,7 +162,7 @@ public class ShoePoseReceiver : MonoBehaviour
         Destroy(snap);
     }
 
-    void UpdateShoePose(Vector3 cameraSpacePos, Quaternion rotation, Vector3 scale)
+    /*void UpdateShoePose(Vector3 cameraSpacePos, Quaternion rotation, Vector3 scale)
     {
         Debug.Log($"[Pose Debug] Pos: {cameraSpacePos}, Rot: {rotation.eulerAngles}, Scale: {scale}");
 
@@ -187,16 +187,16 @@ public class ShoePoseReceiver : MonoBehaviour
 
         shoeModel.SetActive(true);
         Debug.Log("Corrected World Shoe Pos: " + worldPos);
-    }
+    }*/
 
-    /*void UpdateShoePose(Vector3 cameraSpacePos, Quaternion rotation, Vector3 scale)
+    void UpdateShoePose(Vector3 cameraSpacePos, Quaternion rotation, Vector3 scale)
     {
-        *//*Debug.Log($"[Pose Debug] Pos: {cameraSpacePos}, Rot: {rotation.eulerAngles}, Scale: {scale}");*//*
+        Debug.Log($"[Pose Debug] Pos: {cameraSpacePos}, Rot: {rotation.eulerAngles}, Scale: {scale}");
 
         // Sanitize input
         if (cameraSpacePos == Vector3.zero || cameraSpacePos.z < 0)
         {
-            shoeModel.SetActive(false);
+            /*shoeModel.SetActive(false);*/
             return;
         }
 
@@ -207,23 +207,21 @@ public class ShoePoseReceiver : MonoBehaviour
         float distanceToAnchor = Vector3.Distance(worldPos, shoeAnchor.position);
         if (distanceToAnchor > activationDistance)
         {
-            shoeModel.SetActive(false);
+            /*shoeModel.SetActive(false);*/
             return;
         }
 
         // Snap shoe to anchor
         shoeModel.transform.position = shoeAnchor.position;
 
-        *//*shoeModel.transform.rotation = Vector3.zero;*/
-
-        /*shoeModel.transform.localScale = new Vector3(
+        shoeModel.transform.localScale = new Vector3(
             Mathf.Max(scale.x, 0.06f),
             Mathf.Max(scale.y, 0.06f),
             Mathf.Max(scale.z, 0.06f)
-        );*//*
+        );
         Debug.Log($"[Pose Debug] Pos: {cameraSpacePos}, Rot: {rotation.eulerAngles}, Scale: {shoeModel.transform.localScale}");
         shoeModel.SetActive(true);
-    }*/
+    }
 
     void OnDrawGizmosSelected()
     {
