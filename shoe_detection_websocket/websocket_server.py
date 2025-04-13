@@ -2,6 +2,7 @@ import asyncio
 import websockets
 import json
 from detect_shoe import detect_objects
+from detect_shoe_custom import detect_objects_custom
 
 async def handler(websocket, path):
     print("Client connected")
@@ -13,6 +14,8 @@ async def handler(websocket, path):
             # Expecting a base64-encoded image string
             try:
                 detections = detect_objects(message)
+                if len(detections) == 0:
+                    detections = detect_objects_custom(message)
                 await websocket.send(json.dumps(detections))
             except Exception as e:
                 error_msg = {'error': str(e)}
